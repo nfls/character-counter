@@ -4,6 +4,8 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -31,6 +33,9 @@ public class CharacterCounter extends JFrame {
         textArea = new JTextArea("在这里粘贴需要检测的文本");
         scrollPane.setViewportView(textArea);
         scrollPane.setSize(new Dimension(800, 600));
+
+        textArea.setWrapStyleWord(true);
+        textArea.setLineWrap(true);
 
         panel = new JPanel(new GridLayout(1, 3));
 
@@ -98,6 +103,19 @@ public class CharacterCounter extends JFrame {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 System.out.println("Text Property Changed !");
+            }
+        });
+
+        textArea.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                textArea.setSelectionStart(0);
+                textArea.setSelectionEnd(textArea.getText().length());
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+
             }
         });
 
