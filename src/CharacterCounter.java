@@ -11,13 +11,13 @@ import java.awt.event.MouseListener;
 
 public class CharacterCounter extends JFrame {
 
-    JSplitPane splitPane;
-    JScrollPane scrollPane;
-    JTextArea textArea;
-    JPanel panel;
-    JButton aboutButton;
-    JCheckBox checkBox;
-    JTextField textField;
+    private JSplitPane splitPane;
+    private JScrollPane scrollPane;
+    private JTextArea textArea;
+    private JPanel panel;
+    private JButton aboutButton;
+    private JCheckBox checkBox;
+    private JTextField textField;
 
     public static void main(String[] args) {
         new CharacterCounter().setVisible(true);
@@ -119,15 +119,12 @@ public class CharacterCounter extends JFrame {
             }
         });
 
-        checkBox.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                if (!checkBox.isSelected()) {
-                    System.out.print("Do not ");
-                }
-                System.out.println("Contains Symbols !");
-                refreshCounter();
+        checkBox.addChangeListener(e -> {
+            if (!checkBox.isSelected()) {
+                System.out.print("Do not ");
             }
+            System.out.println("Contains Symbols !");
+            refreshCounter();
         });
 
         refreshCounter();
