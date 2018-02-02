@@ -138,8 +138,7 @@ public class CharacterCounter extends JFrame {
 
         if (text.length() != 0) {
             if (!countSymbols) {
-                //[\u4e00-\u9fa5]|
-                countedText = text.replaceAll("[\\（\\）\\《\\》\\——\\；\\，\\。\\“\\”\\<\\>\\！\\n\\r]", "");
+                countedText = text.replaceAll("[\\x{0020}-\\x{007f}\\x{2000}-\\x{206f}\\x{3000}-\\x{303f}\\x{ff00}-\\x{ffef}\\s+]+", "");
                 if (countedText.length() != 0) {
                     isEmpty = false;
                 }
