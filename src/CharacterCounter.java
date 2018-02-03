@@ -153,5 +153,6 @@ public class CharacterCounter extends JFrame {
         } else {
             textField.setText("字数：" + countedText.length());
         }
+        System.gc();
     }
 }
